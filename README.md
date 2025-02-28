@@ -1,8 +1,35 @@
-
 # Custom Neural Network Implementation
 
 ## Overview
 A custom implementation of a neural network for binary classification on MNIST dataset. The network features an entropy-based approach with custom dense layers and activation functions, demonstrating both custom and TensorFlow-based solutions for even/odd digit classification.
+
+## implmentation of z mapping
+We have added dual weight nature in the custom neural network  as defined below
+
+```bash
+self.weights = tf.Variable(tf.random.normal([num_inputs, num_neurons], stddev=0.01, dtype=tf.float32))
+self.Gweights = tf.Variable(tf.random.normal([num_inputs, num_neurons], stddev=0.01, dtype=tf.float32))
+```
+
+The forward pass for the given neuron is defined as given below and weight updation constraint is given below
+
+Forward pass: 
+```bash
+def forward(self, inputs, delta=0.5):
+        self.inputs = inputs
+        new_output = tf.matmul(inputs, self.weights) + tf.matmul(inputs, self.Gweights) + self.bias
+```
+
+Z update constration: 
+```bash
+if self.prev_output is not None:
+            output_diff = tf.abs(new_output - self.prev_output)
+            mask = tf.cast(output_diff < delta, dtype=tf.float32)
+            self.output = mask * new_output + (1 - mask) * self.prev_output
+        else:
+            self.output = new_output  # First iteration, no previous output
+```
+
 
 ## Directory Structure
 ```
