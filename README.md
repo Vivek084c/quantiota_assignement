@@ -2,7 +2,7 @@
 # Custom Neural Network Implementation
 
 ## Overview
-A custom implementation of a neural network using TensorFlow for binary classification on MNIST dataset. The network features an entropy-based approach with custom dense layers and activation functions, demonstrating both custom and TensorFlow-based solutions for even/odd digit classification.
+A custom implementation of a neural network for binary classification on MNIST dataset. The network features an entropy-based approach with custom dense layers and activation functions, demonstrating both custom and TensorFlow-based solutions for even/odd digit classification.
 
 ## Directory Structure
 ```
@@ -21,10 +21,10 @@ A custom implementation of a neural network using TensorFlow for binary classifi
 
 ## Requirements
 ```
-tensorflow>=2.10.0
 numpy>=1.21.0
 matplotlib>=3.5.0
 scikit-learn>=1.0.0
+tensorflow>=2.10.0
 jupyter>=1.0.0
 ```
 
